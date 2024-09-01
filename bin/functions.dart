@@ -1,8 +1,18 @@
 import 'dart:io';
 
 void main() {
-int sum =endlessCalcu1ator();
-print("the sum = $sum");
+int start =int.parse(stdin.readLineSync());
+int end =int.parse(stdin.readLineSync());
+printEventNumber(start, end);
+}
+printEventNumber(int start, int end){
+  for(int i=start;i<=end;i++){
+    if(i%2==0){
+      print(i);
+    }
+  }
+
+
 }
 
 int endlessCalcu1ator(){
