@@ -5,13 +5,14 @@ void main() {
   // int number_1 = int.parse(stdin.readLineSync());
   // int number_2 = int.parse(stdin.readLineSync());
   // int number_3 = int.parse(stdin.readLineSync());
-  print("enter the size");
-   int number = int.parse(stdin.readLineSync());
-  List<int> arr =[];
-
-   addArrayFunction(arr, number);
-   stdout.write("the max numbe =${getMaxValue(arr)} ,the min number =${getMinValue(arr)} ");
-   searchValue(arr, 0);
+ // print("enter the size");
+  // int number = int.parse(stdin.readLineSync());
+  List<int> arr =[1,5,8,9,7];
+  // print(arraySubmission(arr));
+arrayIsPrime(arr) ;
+// addArrayFunction(arr, number);
+  //  stdout.write("the max numbe =${getMaxValue(arr)} ,the min number =${getMinValue(arr)} ");
+  //  searchValue(arr, 0);
   // printArray(arr);
   // arrayIsPrime(arr);
   // print(isPrime(9));
@@ -114,25 +115,44 @@ void printArray(List<int> arr){
     print("the index = $i , the number of array= ${arr[i]}");
   }
 }
-bool isPrime(int number){
-  int counter =0;
-  if(number<=0){
-    return false;
-  }
-  for(int i=1; i<=number; i++) {
-    if (number%i==0){
-counter++;
-    }
-  }
-  if(counter==2){
-    return true;
-  }
-  return false;
-}
+// bool isPrime(int number){
+//   int counter =0;
+//   if(number<=0){
+//     return false;
+//   }
+//   for(int i=1; i<=number; i++) {
+//     if (number%i==0){
+// counter++;
+//     }
+//   }
+//   if(counter==2){
+//     return true;
+//   }
+//   return false;
+// }
+ bool isPrime(int number) {
+   if (number <= 1) {
+     return false;
+   }
+   for (int i = 2; i < number; i++) {
+     if (number % i == 0) {
+       return false;
+     }
+   }
+   return true;
+ }
+
 arrayIsPrime(List<int> arr){
   for(int i=0; i<arr.length;i++){
     if(isPrime(arr[i])){
 stdout.write("[${arr[i]}]");
     }
   }
+}
+int arraySubmission(List<int>arr){
+  int sum =0;
+  for(int i=0; i<arr.length;i++){
+    sum+=arr[i];
+  }
+  return sum;
 }
