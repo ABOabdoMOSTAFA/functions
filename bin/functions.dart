@@ -1,127 +1,138 @@
+
 import 'dart:io';
-// Write a dart program that takes a number as
-// input and prints its multiplication table up to 12
+
 void main() {
-  //print(factorial(5));
-  //drawSquare(4);
- // drawTraingle(4);
- //  print(isPrime(-1));  // Should print true
- //  print(isPrime(0));  // Should print false
- // print(reversedString("hello"));  // Should print "olleh"
-  //rangePrime(1, 1000);
- // rangePrime(1, 1000);
-//drawTriangle(5);
-  print("enter the number ");
-int number =int.parse(stdin.readLineSync());
-multiplicationTable(number);
-}
-void drawSquare(int n){//4
-  for(int i=1;i<=n;i++) {
-    for (int j= 1; j <=n; j++) {
-      stdout.write(" * ");
-    }
-    print("");
-  }
-}
+  // int number_1 = int.parse(stdin.readLineSync());
+  // int number_2 = int.parse(stdin.readLineSync());
+  // int number_3 = int.parse(stdin.readLineSync());
+  print("enter the size");
+   int number = int.parse(stdin.readLineSync());
+  List<int> arr =[];
 
-int endlessCalcu1ator(){
-  int counter =1;
-  int result =0;
-  while(counter!=0){
-    print("enter the number ");
-    int number =int.parse(stdin.readLineSync());//7
-    result+=number;
-    counter=number;
-  }
-  return result;
+   addArrayFunction(arr, number);
+   stdout.write("the max numbe =${getMaxValue(arr)} ,the min number =${getMinValue(arr)} ");
+   searchValue(arr, 0);
+  // printArray(arr);
+  // arrayIsPrime(arr);
+  // print(isPrime(9));
+// print("the index = ${getMinIndexValue(arr)},the number of array=${getMinValue(arr)}");
+//print(getMinIndexValue(arr));
+// int result =searchValue(arr, 10);
+//   if(result==-1){
+//     print("not founded");
+//
+//   }else print("founded and the index = $result");
 
-}
-// create endlessCalcu1ator func
-// that allows user yo enter numbers
-// when user enter 0 stop and
-// get the Sum of numbers
-int factorial(int n) {
-  int result=1;
-  for(int i=1;i<=n;i++){
-    result*=i;
-  }
-  return result;
+//printArray(arr);
 }
 /*
-bool isPrime(int n) {
-  if(n<=1){
+/// search for value inside the arr
+/// return index of value if found
+int search(List<int> arr, int)
+// arr ==[2,3,6,8,3,9]
+// index==0,1,2,3,4,5
+value =8
+ */
+int searchValue(List<int> arr,int value){
+  for(int i=0;i<arr.length;i++){
+    if(arr[i]==value){//
+      return i;
+    }
+  }
+  return -1;
+}
+
+
+void addArrayFunction(List<int>arr,size ){
+  for(int i=0;i<size;i++){
+    print("enter the number");
+    int number = int.parse(stdin.readLineSync());
+
+    arr.add(number);
+  }
+}
+
+int getMaxValue(List<int>arr ){//[1,2,3,4]
+  int max=arr[0];
+  for(int i=0;i<arr.length;i++){
+    if(arr[i]>max){
+      max=arr[i];
+    }
+  }
+  return max;
+}
+
+
+int calculateAverage(List<int> arr) {
+  int average = 0;
+  int sum = 0;
+
+  for (int i = 0; i < arr.length; i++) {
+    sum += arr[i]; //100
+  }
+  average = sum ~/ arr.length;
+
+  return average;
+}
+
+int getMinValue(List<int> arr) {
+  int min=arr[0];
+  for(int i=0;i<arr.length;i++){
+    if(arr[i]<min){
+      min=arr[i];
+    }
+  }
+  return min;
+    // if(arr[0]<arr[1]&&arr[0]<arr[2]&&arr[0]<arr[3]){
+    //   return arr[0];
+    // }else if(arr[1]<arr[0]&&arr[1]<arr[2]&&arr[1]<arr[3]){
+    //   return arr[1];
+    // }else if(arr[2]<arr[0]&&arr[2]<arr[1]&&arr[2]<arr[3]){
+    //   return arr[2];
+    // }else return arr[3];
+
+}
+int getMinIndexValue(List<int> arr) {
+  int index=0;
+  for(int i=0;i<arr.length;i++){
+    if(arr[i]<arr[index]){
+      index=i;
+    }
+  }
+  return index;
+    // if(arr[0]<arr[1]&&arr[0]<arr[2]&&arr[0]<arr[3]){
+    //   return arr[0];
+    // }else if(arr[1]<arr[0]&&arr[1]<arr[2]&&arr[1]<arr[3]){
+    //   return arr[1];
+    // }else if(arr[2]<arr[0]&&arr[2]<arr[1]&&arr[2]<arr[3]){
+    //   return arr[2];
+    // }else return arr[3];
+
+}
+void printArray(List<int> arr){
+  for(int i=0;i<arr.length;i++){
+    print("the index = $i , the number of array= ${arr[i]}");
+  }
+}
+bool isPrime(int number){
+  int counter =0;
+  if(number<=0){
     return false;
   }
-  for(int i=2;i<n;i++){//5
-    if(n%i==0){
-      return false;
+  for(int i=1; i<=number; i++) {
+    if (number%i==0){
+counter++;
     }
   }
-  return true;
-
-}
-*/
-String reversedString(String s){//hello olleh
-  String reverse="";
-  for(int i=s.length-1;i>=0;i--){
-reverse+=s[i];
-
+  if(counter==2){
+    return true;
   }
-  return reverse;
+  return false;
 }
-void drawTriangle(int lines){//5
-  for(int i=1;i<=lines;i++){
-    for(int j=0;j<i;j++){
-      stdout.write(" * ");
-    }
-    print("");
-  }
-
-}
-// write a function to print all prime numbers from 1 -> 1000
-/*
-void rangePrime(int start , int end){//1 //1000
-    for (int i =start; i < end; i++) {//1 //1000
-   if(isPrime(i)){
-     print(i);
-   }
-    }
-
-}
-*/
-void rangePrime(int start , int end){
-  for(int i=start;i<=end;i++){
-    if(isPrime(i)){
-      print(i);
+arrayIsPrime(List<int> arr){
+  for(int i=0; i<arr.length;i++){
+    if(isPrime(arr[i])){
+stdout.write("[${arr[i]}]");
     }
   }
 }
-
-bool isPrime(int n) {//2
-  if(n<=1){
-    return false;
-  }
-  for(int i=2;i<n;i++){
-    if(n%i==0){
-      return false;
-    }
-  }
-return true;
-}
-void multiplicationTable(int n){//1
-  //1*1=1
-  //1*2=2
-  if(n<0) {
-    print("Invaild number");
-  }else {
-    int result = 0;
-    for (int i = 1; i <= 12; i++) {
-      result = n * i;
-      print("$n*$i=$result");
-    }
-  }
-}
-
-
-
-
